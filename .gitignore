@@ -6,3 +6,4 @@ gst-build-x86_64/
 libs/
 obj/
 src/
+out/

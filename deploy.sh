@@ -12,7 +12,6 @@ fi
 git checkout gh-pages
 git mv .gitignore.gh.pages .gitignore
 git add .gitignore out
-echo $1
 git commit -m $1
 git push origin gh-pages
 git checkout master
