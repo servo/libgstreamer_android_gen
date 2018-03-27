@@ -39,6 +39,3 @@ Finally run:
 
 This should generate an `out` folder containing a zip file per architecture including the
 `libgstreamer_android.so` and a `src.zip` file with the generated `GStreamer.java` among others.
-
-## Deploy
-The resulting artifacts are served via [Github Pages](https://pages.github.com/).
