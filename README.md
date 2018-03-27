@@ -42,8 +42,3 @@ This should generate an `out` folder containing a zip file per architecture incl
 
 ## Deploy
 The resulting artifacts are served via [Github Pages](https://pages.github.com/).
-There is a shell script to assist with the process:
-
-```bash
-./deploy.sh
-```
