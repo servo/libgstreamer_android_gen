@@ -26,6 +26,6 @@ $(error Target arch ABI not supported: $(TARGET_ARCH_ABI))
 endif
 
 GSTREAMER_NDK_BUILD_PATH  := $(GSTREAMER_ROOT)/share/gst-android/ndk-build/
-GSTREAMER_PLUGINS         := coreelements
-GSTREAMER_EXTRA_DEPS      := glib-2.0 gstreamer-base-1.0 gstreamer-audio-1.0
+GSTREAMER_PLUGINS         := coreelements audioconvert
+GSTREAMER_EXTRA_DEPS      := glib-2.0 gstreamer-base-1.0 gstreamer-audio-1.0 gstreamer-plugins-base-1.0
 include $(GSTREAMER_NDK_BUILD_PATH)/gstreamer-1.0.mk
