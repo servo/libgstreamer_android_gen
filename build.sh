@@ -14,9 +14,8 @@ for D in gst-build-armeabi gst-build-arm64-v8a gst-build-armeabi-v7a gst-build-x
 do
   echo 'Processing '$D
   cd $D
-  sed -i .bak 's?libdir=.*?libdir='`pwd`'?g' pkgconfig/*
-  sed -i .bak 's/Libs: -L${libdir} -l.*/Libs: -L${libdir} -lgstreamer_android/g' pkgconfig/*
-  rm pkgconfig/*.bak
+  sed -i -e 's?libdir=.*?libdir='`pwd`'?g' pkgconfig/*
+  sed -i -e 's?Libs: -L${libdir}.*?Libs: -L${libdir} -lgstreamer_android?g' pkgconfig/*
   cd ..
   zip -v out/$D.zip $D/* -r
   rm -rf $D
