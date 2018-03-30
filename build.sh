@@ -15,7 +15,8 @@ do
   echo 'Processing '$D
   cd $D
   sed -i -e 's?libdir=.*?libdir='`pwd`'?g' pkgconfig/*
-  sed -i -e 's?.* -L${libdir}.*?Libs: -L${libdir} -lgstreamer_android?g' pkgconfig/*
+  sed -i -e 's?.* -L${.*?Libs: -L${libdir} -lgstreamer_android?g' pkgconfig/*
+  sed -i -e 's?Libs.private.*?Libs.private: -lgstreamer_android?g' pkgconfig/*
   cd ..
   zip -v out/$D.zip $D/* -r
   rm -rf $D
