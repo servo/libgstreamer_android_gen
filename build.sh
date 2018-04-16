@@ -16,6 +16,7 @@ do
   cd $D
   sed -i -e 's?libdir=.*?libdir='`pwd`'?g' pkgconfig/*
   sed -i -e 's?.* -L${.*?Libs: -L${libdir} -lgstreamer_android?g' pkgconfig/*
+  sed -i -e 's?Libs:.*?Libs: -L${libdir} -lgstreamer_android?g' pkgconfig/*
   sed -i -e 's?Libs.private.*?Libs.private: -lgstreamer_android?g' pkgconfig/*
   rm -rf pkgconfig/*-e*
   cd ..
