@@ -1,16 +1,15 @@
 ndk-build
 
-rm -rf libs obj
-
-cp -r $GSTREAMER_ROOT_ANDROID/arm/lib/pkgconfig gst-build-armeabi/
-cp -r $GSTREAMER_ROOT_ANDROID/arm64/lib/pkgconfig gst-build-arm64-v8a/
+cp -r libs/armeabi-v7a/libgstreamer_android.so gst-build-armeabi-v7a/
 cp -r $GSTREAMER_ROOT_ANDROID/armv7/lib/pkgconfig gst-build-armeabi-v7a/
+cp -r libs/x86/libgstreamer_android.so gst-build-x86/
 cp -r $GSTREAMER_ROOT_ANDROID/x86/lib/pkgconfig gst-build-x86/
-cp -r $GSTREAMER_ROOT_ANDROID/x86_64/lib/pkgconfig gst-build-x86_64/
+
+rm -rf libs obj
 
 mkdir out
 
-for D in gst-build-armeabi gst-build-arm64-v8a gst-build-armeabi-v7a gst-build-x86 gst-build-x86_64
+for D in gst-build-armeabi-v7a gst-build-x86
 do
   echo 'Processing '$D
   cd $D
