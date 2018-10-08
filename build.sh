@@ -14,7 +14,7 @@ DATE=`date "+%Y%m%d-%H%M%S"`
 rm -rf out
 mkdir out
 
-for TARGET in armv7 x86
+for TARGET in armv7 x86 arm
 do
   NDK_APPLICATION_MK="jni/${TARGET}.mk"
   echo "\n\n=== Building GStreamer ${VERSION} for target ${TARGET} with ${NDK_APPLICATION_MK} ==="
@@ -23,6 +23,8 @@ do
 
   if [ $TARGET = "armv7" ]; then
     LIB="armeabi-v7a"
+  elif [ $TARGET = "arm" ]; then
+    LIB="armeabi"
   else
     LIB="x86"
   fi;
@@ -42,6 +44,7 @@ do
   cd ..
   ZIP="gstreamer-${LIB}-${VERSION}-${DATE}"
   zip -v out/$ZIP.zip $GST_LIB/* -r
+  zip -v out/$GST_LIB.zip $GST_LIB/* -r
   rm -rf $GST_LIB
 done
 
