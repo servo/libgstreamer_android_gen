@@ -21,7 +21,7 @@ The recommended NDK version is [r16b](https://developer.android.com/ndk/download
 
 Download [GStreamer prebuilt binaries](https://gstreamer.freedesktop.org/data/pkg/android/)
 for Android. The current version known to work with [gstreamer-rs](https://github.com/sdroege/gstreamer-rs)
-is [1.14.0](https://gstreamer.freedesktop.org/data/pkg/android/1.14.0/)
+is [1.14.3](https://gstreamer.freedesktop.org/data/pkg/android/1.14.3/)
 
 The ndk-build Makefiles need to know where you installed the GStreamer binaries.
 You must define an environment variable called `GSTREAMER_ROOT_ANDROID` and point it to the
