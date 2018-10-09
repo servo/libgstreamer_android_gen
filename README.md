@@ -39,3 +39,15 @@ Finally run:
 
 This should generate an `out` folder containing a zip file per architecture including the
 `libgstreamer_android.so` and a `src.zip` file with the generated `GStreamer.java` among others.
+
+## Deploy
+The GStreamer binaries per each platform are deployed to Servo's AWS S3 space.
+
+In order to deploy new binaries you need the [s3cmd](https://s3tools.org/s3cmd) tool and authorized access to Servo's S3.
+
+The generated binaries are named with this nomenclature: `gstreamer-<target>-<version>-<date>-<time>.zip` and are meant to be uploaded to `http://servo-deps.s3.amazonaws.com/gstreamer`.
+
+An example command to upload new binaries to http://servo-deps.s3.amazonaws.com/gstreamer/gstreamer-armeabi-v7a-1.14.3-20181004-142930.zip:
+```
+./s3cmd put ~/dev/gstreamer/libgstreamer_android_gen/out/gstreamer-armeabi-v7a-1.14.3-20181004-142930.zip s3://servo-deps/gstreamer/gstreamer-armeabi-v7a-1.14.3-20181004-142930.zip -P
+```
