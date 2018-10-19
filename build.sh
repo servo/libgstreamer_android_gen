@@ -36,11 +36,10 @@ do
 
   echo 'Processing '$GST_LIB
   cd $GST_LIB
-  sed -i -e 's?libdir=.*?libdir='`pwd`'?g' pkgconfig/*
-  sed -i -e 's?.* -L${.*?Libs: -L${libdir} -lgstreamer_android?g' pkgconfig/*
-  sed -i -e 's?Libs:.*?Libs: -L${libdir} -lgstreamer_android?g' pkgconfig/*
-  sed -i -e 's?Libs.private.*?Libs.private: -lgstreamer_android?g' pkgconfig/*
-  rm -rf pkgconfig/*.pc-e*
+  sed -i 's?libdir=.*?libdir='`pwd`'?g' pkgconfig/*
+  sed -i 's?.* -L${.*?Libs: -L${libdir} -lgstreamer_android?g' pkgconfig/*
+  sed -i 's?Libs:.*?Libs: -L${libdir} -lgstreamer_android?g' pkgconfig/*
+  sed -i 's?Libs.private.*?Libs.private: -lgstreamer_android?g' pkgconfig/*
   cd ..
   ZIP="gstreamer-${LIB}-${VERSION}-${DATE}"
   zip -v out/$ZIP.zip $GST_LIB/* -r
