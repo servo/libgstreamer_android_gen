@@ -14,7 +14,7 @@ DATE=`date "+%Y%m%d-%H%M%S"`
 rm -rf out
 mkdir out
 
-for TARGET in armv7 x86 arm
+for TARGET in armv7 x86 arm arm64
 do
   NDK_APPLICATION_MK="jni/${TARGET}.mk"
   echo "\n\n=== Building GStreamer ${VERSION} for target ${TARGET} with ${NDK_APPLICATION_MK} ==="
@@ -25,6 +25,8 @@ do
     LIB="armeabi-v7a"
   elif [ $TARGET = "arm" ]; then
     LIB="armeabi"
+  elif [ $TARGET = "arm64" ]; then
+    LIB="arm64-v8a"
   else
     LIB="x86"
   fi;
@@ -36,10 +38,11 @@ do
 
   echo 'Processing '$GST_LIB
   cd $GST_LIB
-  sed -i 's?libdir=.*?libdir='`pwd`'?g' pkgconfig/*
-  sed -i 's?.* -L${.*?Libs: -L${libdir} -lgstreamer_android?g' pkgconfig/*
-  sed -i 's?Libs:.*?Libs: -L${libdir} -lgstreamer_android?g' pkgconfig/*
-  sed -i 's?Libs.private.*?Libs.private: -lgstreamer_android?g' pkgconfig/*
+  sed -i -e 's?libdir=.*?libdir='`pwd`'?g' pkgconfig/*
+  sed -i -e 's?.* -L${.*?Libs: -L${libdir} -lgstreamer_android?g' pkgconfig/*
+  sed -i -e 's?Libs:.*?Libs: -L${libdir} -lgstreamer_android?g' pkgconfig/*
+  sed -i -e 's?Libs.private.*?Libs.private: -lgstreamer_android?g' pkgconfig/*
+  rm -rf pkgconfig/*pc-e*
   cd ..
   ZIP="gstreamer-${LIB}-${VERSION}-${DATE}"
   zip -v out/$ZIP.zip $GST_LIB/* -r
