@@ -51,3 +51,6 @@ An example command to upload new binaries to http://servo-deps.s3.amazonaws.com/
 ```
 ./s3cmd put ~/dev/gstreamer/libgstreamer_android_gen/out/gstreamer-armeabi-v7a-1.14.3-20181004-142930.zip s3://servo-deps/gstreamer/gstreamer-armeabi-v7a-1.14.3-20181004-142930.zip -P
 ```
+
+## Known issues
+* [Android binaries have text relocations. Prevents usage on Android >= 5.0](https://gitlab.freedesktop.org/gstreamer/cerbero/issues/8). The current workaround involves removing the `openh264` plugin from the list of plugins for the x86 arch. The plugin list is located at `$GSTREAMER_ROOT_ANDROID/x86/share/gst-android/ndk-build/plugins.mk`
