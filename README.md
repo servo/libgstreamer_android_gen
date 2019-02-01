@@ -53,4 +53,6 @@ An example command to upload new binaries to http://servo-deps.s3.amazonaws.com/
 ```
 
 ## Known issues
-* [Android binaries have text relocations. Prevents usage on Android >= 5.0](https://gitlab.freedesktop.org/gstreamer/cerbero/issues/8). The current workaround involves removing the `openh264` plugin from the list of plugins for the x86 arch. The plugin list is located at `$GSTREAMER_ROOT_ANDROID/x86/share/gst-android/ndk-build/plugins.mk`
+* [Android binaries have text relocations. Prevents usage on Android >= 5.0](https://gitlab.freedesktop.org/gstreamer/cerbero/issues/8). The current workaround involves removing the `openh264` plugin from the list of plugins for the x86 arch. The plugin list is located at `$GSTREAMER_ROOT_ANDROID/*/share/gst-android/ndk-build/plugins.mk`
+
+* [`nice` is missing from the plugins list in versions <= 1.14.4](https://github.com/servo/servo/pull/22780#discussion_r252767768). We need to manually add it to `$GSTREAMER_ROOT_ANDROID/*/share/gst-android/ndk-build/plugins.mk`
